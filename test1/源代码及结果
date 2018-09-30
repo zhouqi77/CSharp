@@ -1,4 +1,3 @@
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +15,7 @@ namespace LCS
         string[,] b;
         int[,] c;
 
-        public void LCS_LENGTH(int[] X, int[] Y)
+        public void LCS_SIZE(int[] X, int[] Y)
         {
             b = new string[X.Length, Y.Length];
             c = new int[X.Length + 1, Y.Length + 1];
@@ -35,35 +34,34 @@ namespace LCS
                     if (X[i] == Y[j])
                     {
                         c[i + 1, j + 1] = c[i, j] + 1;
-                        b[i, j] = "left_up";//lu表示左上↖
+                        b[i, j] = "lp";//lp表示左上↖
                     }
                     else if (c[i, j + 1] >= c[i + 1, j])
                     {
                         c[i + 1, j + 1] = c[i, j + 1];
-                        b[i, j] = "up";//up表示↑
+                        b[i, j] = "p";//p表示↑
                     }
                     else
                     {
                         c[i + 1, j + 1] = c[i + 1, j];
-                        b[i, j] = "left"; //left表示←
+                        b[i, j] = "l"; //l表示←
                     }
 
                 }
             }
         }
-       
+
         static void Main(string[] args)
         {
-            int[] list1 = {1,2,3,4,5,9};
-            int[] list2 = {2,3,4,8,9};
+            int[] list1 = { 1, 2, 3, 4, 5, 9 };
+            int[] list2 = { 2, 3, 4, 8, 9 };
             LCS lcs = new LCS();
-            lcs.LCS_LENGTH(list1, list2);
+            lcs.LCS_SIZE(list1, list2);
             for (int i = 0; i < list1.Length; i++)
             {
                 for (int j = 0; j < list2.Length; j++)
                 {
-                    //lcs.LCSP(lcs.b, list1, i, j);
-                    if (lcs.b[i, j] == "left_up")
+                    if (lcs.b[i, j] == "lp")
                     {
                         Console.WriteLine("{0}", list1[i]);
                     }
@@ -74,7 +72,11 @@ namespace LCS
     }
 }
 
-
 //运行结果
+
+2
+3
+4
+9
 
 
