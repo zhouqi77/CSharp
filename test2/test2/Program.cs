@@ -1,15 +1,1 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace test2
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-        }
-    }
-}
+﻿using DocumentFormat.OpenXml.Packaging;using DocumentFormat.OpenXml.Wordprocessing;using System;using System.Collections.Generic;using System.Linq;using System.Text;using System.Threading.Tasks;namespace ConsoleApp1{    class Program    {        static void Main(string[] args)        {            string wordPathStr = @"F:\CSharp\CSharp\test2\科研细则.docx";            using (WordprocessingDocument doc = WordprocessingDocument.Open(wordPathStr, true))            {                Body body = doc.MainDocumentPart.Document.Body;                foreach (var paragraph in body.Elements<Paragraph>())                {                    Console.WriteLine(paragraph.InnerText);                }            }            Console.ReadLine();        }    }}
